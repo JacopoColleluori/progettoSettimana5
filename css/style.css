@@ -1,0 +1,179 @@
+* {
+    font-family: 'Lexend', sans-serif;
+}
+
+.container {
+    width: 900px;
+    margin: auto;
+    background-color: rgba(22, 104, 228, 0.925);
+    user-select: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.icon-grid {
+/* flex! */
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-content: space-between;
+
+}
+
+
+
+/*.show {*/
+/* visibilità e opacità */
+/*}*/
+
+#griglia>div {
+    /* dimensioni e margini */
+    background-color: #b80adbdc;
+    border: 1px solid #3889c4;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.timer {
+    padding: 10px 0;
+}
+
+.icon {
+    font-size: 80px;
+    text-align: center;
+    visibility: visible !important;
+    opacity: 0;
+    width: 120px;                             /*problemi con OPERA */  
+    height: 120px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #3889c4;
+   
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: wait;
+}
+
+.show {
+    animation-name: rotazione-carta;
+    animation-fill-mode: forwards;
+    animation-duration: .5s;
+    background-color: white;
+    
+    
+}
+
+.find {
+    animation-name: indovinato;
+    animation-duration: .5s;
+    background-color: rgba(247, 212, 16, 0.56);
+    border: 1px solid #3889c4;
+    border-radius: 10px;
+    opacity:1;
+}
+
+.button {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #b80adbdc;
+    border: 1px solid #3889c4;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #16486c;
+    border: none;
+}
+
+
+#tempoTrascorso{
+    font-size: 1.5em; 
+}
+
+#modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#modal.active {
+    display: flex;
+}
+
+#modal h2 {
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 400px;
+    }
+    #griglia>div {
+        margin: 5px 5px;
+        width: 70px;
+        height: 70px;
+    }
+    .icon {
+        font-size: 50px;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        width: 230px;
+    }
+    #griglia>div {
+        margin: 5px 5px;
+        width: 40px;
+        height: 40px;
+    }
+    .icon {
+        font-size: 30px;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes indovinato { /* animazione quando si indovina */
+    from {
+        transform: scale(1);
+       
+    }
+    50% {
+        transform: scale(1.2);
+        
+    }
+    to{
+        transform: scale(0.9);
+        
+    }
+}
+
+@keyframes rotazione-carta { /* animazione quando ruota la carta */
+    from {transform: rotate3d(0,1,0,0deg);
+        opacity:0;
+    }
+    50% {
+        transform: rotate3d(0,1,0,90deg);
+        opacity: 0.1;
+    }
+    to {
+        transform: rotate3d(0,1,0,180deg);
+        opacity:1
+    }
+}
